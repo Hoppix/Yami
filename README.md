@@ -1,2 +1,3 @@
 # Yami
-soon
+
+Discord Bot for private Discord server

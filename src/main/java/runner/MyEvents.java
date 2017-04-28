@@ -101,7 +101,8 @@ public class MyEvents
 	}
 
 	private void giveAnime(MessageReceivedEvent event, List<String> args)
-	{			
+	{
+		//TODO error handling when list is empty.
 		String anime = recommendationList.getRandomProxerAnime().toString();
 		BotUtils.sendMessage(event.getChannel(), anime);				
 	}

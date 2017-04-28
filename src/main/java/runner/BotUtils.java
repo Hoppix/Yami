@@ -8,13 +8,15 @@ import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RateLimitException;
 import sx.blah.discord.util.RequestBuffer;
 
-public class BotUtils {
+public class BotUtils
+{
 
 	// Constants for use throughout the bot
 	static String BOT_PREFIX = "!";
 
 	// Handles the creation and getting of a IDiscordClient object for a token
-	static IDiscordClient getBuiltDiscordClient(String token) {
+	static IDiscordClient getBuiltDiscordClient(String token)
+	{
 
 		// The ClientBuilder object is where you will attach your params for
 		// configuring the instance of your bot.
@@ -24,22 +26,31 @@ public class BotUtils {
 	}
 
 	// Helper functions to make certain aspects of the bot easier to use.
-	static void sendMessage(IChannel channel, String message) {
+	static void sendMessage(IChannel channel, String message)
+	{
 
 		// This might look weird but it'll be explained in another page.
-		RequestBuffer.request(() -> {
-			try {
+		RequestBuffer.request(() ->
+		{
+			try
+			{
 				channel.sendMessage(message);
-			} catch (DiscordException e) {
+			}
+			catch (DiscordException e)
+			{
 				System.err.println("Message could not be sent with error: ");
 				e.printStackTrace();
 			}
 		});
 
-		RequestBuffer.request(() -> {
-			try {
+		RequestBuffer.request(() ->
+		{
+			try
+			{
 				// channel.sendMessage(message);
-			} catch (RateLimitException e) {
+			}
+			catch (RateLimitException e)
+			{
 				System.out.println("Do some logging");
 				throw e;
 			}
@@ -47,7 +58,8 @@ public class BotUtils {
 
 	}
 
-	static void sendBuild(IChannel channel, EmbedBuilder builder) {
+	static void sendBuild(IChannel channel, EmbedBuilder builder)
+	{
 		RequestBuffer.request(() -> channel.sendMessage(builder.build()));
 	}
 }

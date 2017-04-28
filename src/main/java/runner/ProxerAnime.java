@@ -9,19 +9,18 @@ public class ProxerAnime
 	public URL url;
 	public int key;
 
-	public ProxerAnime(String name, String link) throws  WrongLinkException MalformedURLException
+	public ProxerAnime(String name, String link) throws WrongLinkException, MalformedURLException
 	{
-		if(link.contains("proxer"))
+		if (link.contains("proxer"))
 		{
-			String keyString = link.replaceAll("\\D+","");
+			String keyString = link.replaceAll("\\D+", "");
 			key = Integer.parseInt(keyString);
 			label = name;
 			url = new URL(link);
-			//url.getHost();
 		}
 		else
 		{
-			throw new WrongLinkException;
+			throw new WrongLinkException();
 		}
 
 	}

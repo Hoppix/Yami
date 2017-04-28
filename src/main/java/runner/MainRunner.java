@@ -2,11 +2,13 @@ package runner;
 
 import sx.blah.discord.api.IDiscordClient;
 
-public class MainRunner {
+public class MainRunner
+{
 
 	static IDiscordClient cli;
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 
 		cli = BotUtils.getBuiltDiscordClient("MzA2NDA3MjU1NDU5MjMzNzky.C-DTiQ.ByLgE38pRYAG7n6TET7i2d9Ef0k");
 
@@ -19,7 +21,8 @@ public class MainRunner {
 		cli.logout();
 
 		// this keeps the bot from logging multiple times.
-		if (!cli.isLoggedIn()) {
+		if (!cli.isLoggedIn())
+		{
 			cli.login();
 		}
 		cli.changePlayingText("/help");

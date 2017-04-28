@@ -124,7 +124,7 @@ public class MyEvents
 		name = args.get(0);
 		String link;
 		link = args.get(1);
-		BotUtils.sendMessage(event.getChannel(), name + " added to archive.");
+		BotUtils.sendMessage(event.getChannel(), "Anime " + name + " added to archive.");
 		
 		
 		

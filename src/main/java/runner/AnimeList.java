@@ -33,7 +33,7 @@ public class AnimeList
 		linkMap.add(newProxerAnime);
 
 	}
-
+	
 	public void deleteProxerAnime(String name)
 	{
 		for (ProxerAnime proxerAnime : linkMap)
@@ -47,7 +47,7 @@ public class AnimeList
 
 	public void saveAnimeList()
 	{
-		// TODO save into txt file
+		//TODO LOGGING	
 	}
 
 	@Deprecated

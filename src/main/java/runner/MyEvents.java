@@ -1,5 +1,6 @@
 package runner;
 
+import java.net.MalformedURLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class MyEvents
 
 	// generate stuff
 	LocalDateTime time = LocalDateTime.now();
+	AnimeList recommendationList = new AnimeList();
 
 	@EventSubscriber
 	public void onMessageReceived(MessageReceivedEvent event)
@@ -52,6 +54,10 @@ public class MyEvents
 			break;
 			case "giveAnime":
 				giveAnime(event, argsList);
+			break;
+			case "addAnime":
+				addAnime(event, argsList);
+			break;
 
 		}
 
@@ -95,16 +101,48 @@ public class MyEvents
 	}
 
 	private void giveAnime(MessageReceivedEvent event, List<String> args)
+	{			
+		String anime = recommendationList.getRandomProxerAnime().toString();
+		BotUtils.sendMessage(event.getChannel(), anime);				
+	}
+	
+	private void addAnime(MessageReceivedEvent event, List<String> args)
 	{
-		AnimeList.addProxerAnime("test", "proxer.me");
-		String anime = AnimeList.getRandomProxerAnime().toString();
-		BotUtils.sendMessage(event.getChannel(), anime);
-		
-		if(anime.equals(""))
+		if(args.size() == 0)
 		{
-			BotUtils.sendMessage(event.getChannel(), "empty String");
+			BotUtils.sendMessage(event.getChannel(), "No name given!");
+			return;
 		}
-
+		
+		if(args.size() == 1)
+		{
+			BotUtils.sendMessage(event.getChannel(), "No link given!");
+			return;
+		}
+		//why dis?
+		String name; 
+		name = args.get(0);
+		String link;
+		link = args.get(1);
+		BotUtils.sendMessage(event.getChannel(), name + " added to archive.");
+		
+		
+		
+		try
+		{
+			recommendationList.addProxerAnime(name, link);
+		}
+		catch (MalformedURLException e)
+		{
+			BotUtils.sendMessage(event.getChannel(), "Must be complete URL!");
+			e.printStackTrace();
+		}
+		catch (WrongLinkException e)
+		{
+			BotUtils.sendMessage(event.getChannel(), "Must be ProxerLink!");
+			e.printStackTrace();
+		}
+		
 	}
 
 }

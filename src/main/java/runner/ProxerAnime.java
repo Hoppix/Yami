@@ -12,9 +12,9 @@ public class ProxerAnime
 	public ProxerAnime(String name, String link) throws WrongLinkException, MalformedURLException
 	{
 		if (link.contains("proxer"))
-		{
-			String keyString = link.replaceAll("\\D+", "");
-			key = Integer.parseInt(keyString);
+		{			
+			//TODO map keyID
+			key = 0;
 			label = name;
 			url = new URL(link);
 		}
@@ -42,6 +42,6 @@ public class ProxerAnime
 
 	public String toString()
 	{
-		return label + ": " + url.toString();
+		return label + ":  " + url.toString();
 	}
 }

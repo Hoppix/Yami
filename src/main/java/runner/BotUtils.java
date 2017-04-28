@@ -47,7 +47,8 @@ public class BotUtils
 		{
 			try
 			{
-				// channel.sendMessage(message);
+				//channel.sendMessage(message);
+				//duplicate message
 			}
 			catch (RateLimitException e)
 			{

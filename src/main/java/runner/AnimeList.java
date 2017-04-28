@@ -8,38 +8,33 @@ import java.util.Random;
 public class AnimeList
 {
 	private static List<ProxerAnime> linkMap;
-	private ProxerAnime testAnime;
-	private static Random generator;
+	private Random generator;
 
-	public AnimeList() throws MalformedURLException, WrongLinkException
-	{								
+	public AnimeList()
+	{
 		generator = new Random();
 		linkMap = new ArrayList<ProxerAnime>();
-		linkMap.add(testAnime);
 
 	}
 
-	public static ProxerAnime getRandomProxerAnime()
+	public ProxerAnime getRandomProxerAnime()
 	{
-		int rndIndex = generator.nextInt(linkMap.size());				
+		int rndIndex;
+		rndIndex = 0;
+		rndIndex = generator.nextInt(linkMap.size());
 		return linkMap.get(rndIndex);
 
 	}
 
-	public static void addProxerAnime(String name, String link)
+	public void addProxerAnime(String name, String link) throws MalformedURLException, WrongLinkException
 	{
-		try
-		{
-			ProxerAnime newProxerAnime = new ProxerAnime(name, link);
-			linkMap.add(newProxerAnime);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+
+		ProxerAnime newProxerAnime = new ProxerAnime(name, link);
+		linkMap.add(newProxerAnime);
+
 	}
 
-	public static void deleteProxerAnime(String name)
+	public void deleteProxerAnime(String name)
 	{
 		for (ProxerAnime proxerAnime : linkMap)
 		{
@@ -50,13 +45,13 @@ public class AnimeList
 		}
 	}
 
-	public static void saveAnimeList()
+	public void saveAnimeList()
 	{
-		//TODO save into txt file
+		// TODO save into txt file
 	}
 
 	@Deprecated
-	public static int getCardinal()
+	public int getCardinal()
 	{
 		return 0;
 	}

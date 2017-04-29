@@ -89,8 +89,10 @@ public class MyEvents
 		EmbedBuilder builder = new EmbedBuilder();
 
 		builder.withTitle("Commands");
-		builder.appendField("!help:", "shows this message", true);
-		builder.appendField("!test", "gives command arguments(debugging", true);
+		builder.appendField("!help:", "shows this message", false);
+		builder.appendField("!test", "gives command arguments(debugging", false);
+		builder.appendField("!giveAnime", "gives random animeshow from archive", false);
+		builder.appendField("!addAnime", "adds name + link into archive", false);
 		builder.appendField("Author: Hoppix#6723", "[@Github](https://github.com/Hoppix)", false);
 		builder.withColor(255, 0, 0);
 		builder.withTitle("Yami-Bot");

@@ -47,7 +47,7 @@ public class AnimeList
 
 	public void saveAnimeList()
 	{
-		//TODO LOGGING	
+		//TODO LOGGING to txt
 	}
 
 	@Deprecated

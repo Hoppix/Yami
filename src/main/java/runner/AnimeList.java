@@ -49,6 +49,11 @@ public class AnimeList
 	{
 		//TODO LOGGING to txt
 	}
+	
+	public List<ProxerAnime> getAnimeList()
+	{
+		return linkMap;
+	}
 
 	@Deprecated
 	public int getCardinal()

@@ -7,13 +7,12 @@ public class ProxerAnime
 {
 	public String label;
 	public URL url;
-	public int key;
+	public int key;	
 
 	public ProxerAnime(String name, String link) throws WrongLinkException, MalformedURLException
 	{
 		if (link.contains("proxer"))
 		{			
-			//TODO map keyID
 			key = 0;
 			label = name;
 			url = new URL(link);
@@ -43,5 +42,21 @@ public class ProxerAnime
 	public String toString()
 	{
 		return label + ":  " + url.toString();
+	}
+
+	@Deprecated
+	private int mapKey(String hashMe)
+	{		
+		String mapped = "";
+		
+		for(int i = 0; i < hashMe.length(); i++)
+		{
+			Character cAt = hashMe.charAt(i);
+			mapped.concat((int)cAt + "");
+		}
+		
+		int hash = Integer.parseInt(mapped);				
+		return hash;
+		
 	}
 }

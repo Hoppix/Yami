@@ -102,7 +102,13 @@ public class MyEvents
 
 	private void giveAnime(MessageReceivedEvent event, List<String> args)
 	{
-		//TODO error handling when list is empty.
+		if(recommendationList.getAnimeList().isEmpty())
+		{
+			BotUtils.sendMessage(event.getChannel(), "No anime in current archive.");
+			BotUtils.sendMessage(event.getChannel(), "use !addAnime name proxerlink to add into archive");
+			return;
+		}
+		
 		String anime = recommendationList.getRandomProxerAnime().toString();
 		BotUtils.sendMessage(event.getChannel(), anime);				
 	}

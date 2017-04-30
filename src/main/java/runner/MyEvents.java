@@ -23,7 +23,7 @@ public class MyEvents
 	{
 
 		// message split
-		String[] argArray = event.getMessage().getContent().split(" ");
+		String[] argArray = event.getMessage().getContent().split(";");
 
 		if (argArray.length == 0)
 		{

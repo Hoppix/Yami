@@ -28,5 +28,10 @@ public class MainRunner
 		cli.changePlayingText("/help");
 
 	}
+	
+	public static IDiscordClient getCLI()
+	{
+		return cli;
+	}
 
 }

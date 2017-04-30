@@ -43,6 +43,11 @@ public class ProxerAnime
 	{
 		return label + ":  " + url.toString();
 	}
+	
+	public String toSaveString()
+	{
+		return label + ";" + url.toString();
+	}
 
 	@Deprecated
 	private int mapKey(String hashMe)

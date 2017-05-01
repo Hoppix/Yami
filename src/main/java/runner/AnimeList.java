@@ -57,7 +57,7 @@ public class AnimeList
 
 	public void saveAnimeList()
 	{
-		// TODO fix file writing(seperate writer/reader)
+		// TODO fix laggy writing
 		try
 		{
 			FileWriter fileWriter = new FileWriter(fileName);

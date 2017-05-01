@@ -84,15 +84,13 @@ public class MyEvents
 
 	private void sendBuild(MessageReceivedEvent event, List<String> args)
 	{
-		BotUtils.sendMessage(event.getChannel(), " Yami build soon(tm)");
 
 		EmbedBuilder builder = new EmbedBuilder();
 
 		builder.withTitle("Commands");
 		builder.appendField("!help:", "shows this message", false);
-		builder.appendField("!test", "gives command arguments(debugging", false);
 		builder.appendField("!giveAnime", "gives random animeshow from archive", false);
-		builder.appendField("!addAnime", "adds name + link into archive", false);
+		builder.appendField("!addAnime", "adds name link into archive. Syntax: ;name;proxerlink", false);
 		builder.appendField("Author: Hoppix#6723", "[@Github](https://github.com/Hoppix)", false);
 		builder.withColor(255, 0, 0);
 		builder.withTitle("Yami-Bot");

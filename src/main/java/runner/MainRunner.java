@@ -25,7 +25,8 @@ public class MainRunner
 		{
 			cli.login();
 		}
-		cli.changePlayingText("/help");
+		cli.changePlayingText("!help");
+		//TODO is not shown
 
 	}
 	

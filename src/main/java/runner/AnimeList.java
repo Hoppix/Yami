@@ -16,30 +16,13 @@ public class AnimeList
 	private static List<ProxerAnime> linkMap;
 	private Random generator;
 	private String fileName;
-	private FileWriter fileWriter;
-	private FileReader fileReader;
-	private BufferedWriter bufferedWriter;
-	private BufferedReader bufferedReader;
 
 	public AnimeList()
 	{
 		generator = new Random();
 		linkMap = new ArrayList<ProxerAnime>();
 		fileName = "C:\\Users\\khopf\\Desktop\\savelist.txt";
-		//debugging
-
-		try
-		{
-			fileWriter = new FileWriter(fileName);
-			bufferedWriter = new BufferedWriter(fileWriter);
-			fileReader = new FileReader(fileName);
-			bufferedReader = new BufferedReader(fileReader);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-			System.out.println("fehler beim erstellen reader/writer");
-		}
+		// debugging
 
 	}
 
@@ -74,9 +57,14 @@ public class AnimeList
 
 	public void saveAnimeList()
 	{
-		//TODO fix file writing(seperate writer/reader)
+		// TODO fix file writing(seperate writer/reader)
 		try
 		{
+			FileWriter fileWriter = new FileWriter(fileName);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			FileReader fileReader = new FileReader(fileName);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
 			for (int i = 0; i < linkMap.size(); i++)
 			{
 				if (bufferedReader.readLine() == null)
@@ -86,13 +74,14 @@ public class AnimeList
 					bufferedWriter.write(linkMap.get(i).toSaveString());
 					bufferedWriter.newLine();
 					System.out.println("Writing finished");
-					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing finished");			
+					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing finished");
 				}
-				
+
 			}
 			// was buggy
 			// fileWriter.close();
-			// bufferedWriter.close();
+			bufferedWriter.close();
+			bufferedReader.close();
 
 		}
 		catch (IOException e)
@@ -108,6 +97,11 @@ public class AnimeList
 
 		try
 		{
+			FileWriter fileWriter = new FileWriter(fileName);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			FileReader fileReader = new FileReader(fileName);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
 			while ((line = bufferedReader.readLine()) != null)
 			{
 				String name;
@@ -118,6 +112,9 @@ public class AnimeList
 				link = content[1];
 				linkMap.add(new ProxerAnime(name, link));
 			}
+
+			bufferedWriter.close();
+			bufferedReader.close();
 		}
 		catch (FileNotFoundException e)
 		{

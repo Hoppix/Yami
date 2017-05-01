@@ -38,6 +38,7 @@ public class BotUtils
 			}
 			catch (DiscordException e)
 			{
+				System.out.println("BotUtils error");
 				System.err.println("Message could not be sent with error: ");
 				e.printStackTrace();
 			}

@@ -23,6 +23,8 @@ public class AnimeList
 		linkMap = new ArrayList<ProxerAnime>();
 		fileName = "C:\\Users\\khopf\\Desktop\\savelist.txt";
 		// debugging
+		
+		this.retrieveAnimeList();
 
 	}
 
@@ -70,16 +72,13 @@ public class AnimeList
 				if (bufferedReader.readLine() == null)
 				{
 					System.out.println("Writing to line " + i + "..");
-					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing to line " + i + "..");
 					bufferedWriter.write(linkMap.get(i).toSaveString());
 					bufferedWriter.newLine();
 					System.out.println("Writing finished");
-					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing finished");
 				}
 
 			}
-			// was buggy
-			// fileWriter.close();
+
 			bufferedWriter.close();
 			bufferedReader.close();
 
@@ -93,13 +92,10 @@ public class AnimeList
 
 	public void retrieveAnimeList()
 	{
-		//TODO test retrieving
 		String line = null;
 
 		try
 		{
-			FileWriter fileWriter = new FileWriter(fileName);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -114,8 +110,8 @@ public class AnimeList
 				linkMap.add(new ProxerAnime(name, link));
 			}
 
-			bufferedWriter.close();
 			bufferedReader.close();
+			System.out.println("read txt file");
 		}
 		catch (FileNotFoundException e)
 		{

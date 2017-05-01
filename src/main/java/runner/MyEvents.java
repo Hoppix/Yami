@@ -130,14 +130,13 @@ public class MyEvents
 		String name; 
 		name = args.get(0);
 		String link;
-		link = args.get(1);
-		BotUtils.sendMessage(event.getChannel(), "Anime " + name + " added to archive.");
-		
+		link = args.get(1);		
 		
 		
 		try
 		{
 			recommendationList.addProxerAnime(name, link);
+			BotUtils.sendMessage(event.getChannel(), "Anime " + name + " added to archive.");
 		}
 		catch (MalformedURLException e)
 		{

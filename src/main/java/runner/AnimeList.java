@@ -74,8 +74,7 @@ public class AnimeList
 
 	public void saveAnimeList()
 	{
-		//TODO clear file
-		//TODO fix file writing
+		//TODO fix file writing(seperate writer/reader)
 		try
 		{
 			for (int i = 0; i < linkMap.size(); i++)
@@ -87,7 +86,7 @@ public class AnimeList
 					bufferedWriter.write(linkMap.get(i).toSaveString());
 					bufferedWriter.newLine();
 					System.out.println("Writing finished");
-					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing finished");
+					BotUtils.sendMessage(MainRunner.getCLI().getChannels().get(3), "Writing finished");			
 				}
 				
 			}

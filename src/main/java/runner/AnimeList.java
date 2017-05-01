@@ -93,6 +93,7 @@ public class AnimeList
 
 	public void retrieveAnimeList()
 	{
+		//TODO test retrieving
 		String line = null;
 
 		try

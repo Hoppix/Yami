@@ -22,7 +22,7 @@ public class AnimeList
 		generator = new Random();
 		linkMap = new ArrayList<ProxerAnime>();
 		fileName = "C:\\Users\\khopf\\Desktop\\savelist.txt";
-		//TODO debugging
+		//TODO fix to local
 		
 		this.retrieveAnimeList();
 

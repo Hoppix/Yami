@@ -20,7 +20,7 @@ public class MainRunner
 		// missed.
 		cli.logout();
 
-		// this keeps the bot from logging multiple times.
+		// this keeps the bot from logging in multiple times.
 		if (!cli.isLoggedIn())
 		{
 			cli.login();

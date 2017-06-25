@@ -11,6 +11,7 @@ public class MainRunner
 	{
 
 		cli = BotUtils.getBuiltDiscordClient("MzA2NDA3MjU1NDU5MjMzNzky.C-DTiQ.ByLgE38pRYAG7n6TET7i2d9Ef0k");
+		//TODO change bot token
 
 		/*
 		Register a listener via the EventSubscriber annotation which allows

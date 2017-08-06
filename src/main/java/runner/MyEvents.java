@@ -5,6 +5,7 @@ import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.audio.AudioPlayer;
 
 import java.net.MalformedURLException;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class MyEvents
 	{
 
 		// message split
-		String[] argArray = event.getMessage().getContent().split(";");
+		String[] argArray = event.getMessage().getContent().split(" ");
 
 		if (argArray.length == 0)
 		{
@@ -65,7 +66,7 @@ public class MyEvents
 	@EventSubscriber
 	public void isReady(ReadyEvent event)
 	{
-		BotUtils.sendMessage(event.getClient().getChannels().get(0), "Yami is ready");
+		BotUtils.sendMessage(event.getClient().getChannels().get(3), "Yami is ready");
 	}
 
 	@EventSubscriber

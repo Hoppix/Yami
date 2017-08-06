@@ -20,21 +20,27 @@ public class AnimeList
 	public AnimeList()
 	{
 		generator = new Random();
-		linkMap = new ArrayList<ProxerAnime>();
-		fileName = "C:\\Users\\khopf\\Desktop\\savelist.txt";
-		//TODO fix to local
-		
-		this.retrieveAnimeList();
+		linkMap = new ArrayList<>();
+		fileName = "ProxerList.txt";
 
+		try
+		{
+			FileWriter fileWriter = new FileWriter(fileName);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		//clunky: used for creating the file at startup if it does not exist
+
+		this.retrieveAnimeList();
 	}
 
 	public ProxerAnime getRandomProxerAnime()
 	{
 		int rndIndex;
-		rndIndex = 0;
 		rndIndex = generator.nextInt(linkMap.size());
 		return linkMap.get(rndIndex);
-
 	}
 
 	public void addProxerAnime(String name, String link) throws MalformedURLException, WrongLinkException

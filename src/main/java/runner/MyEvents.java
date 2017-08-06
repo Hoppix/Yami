@@ -1,11 +1,11 @@
 package runner;
 
+import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.util.EmbedBuilder;
-import sx.blah.discord.util.audio.AudioPlayer;
 
 import java.net.MalformedURLException;
 import java.time.LocalDateTime;
@@ -18,7 +18,15 @@ public class MyEvents
 
 	// generate stuff
 	LocalDateTime time = LocalDateTime.now();
-	AnimeList recommendationList = new AnimeList();
+	AnimeList recommendationList;
+	IDiscordClient parentClient;
+
+	public MyEvents(IDiscordClient cli)
+	{
+		parentClient = cli;
+		recommendationList = new AnimeList();
+
+	}
 
 	@EventSubscriber
 	public void onMessageReceived(MessageReceivedEvent event)

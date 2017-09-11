@@ -24,13 +24,13 @@ public class MainRunner
 		missed.
 		*/
 		cli.logout();
+		cli.changePlayingText("!help");
 
 		// this keeps the bot from logging in multiple times.
 		if (!cli.isLoggedIn())
 		{
 			cli.login();
 		}
-		cli.changePlayingText("!help");
 		//TODO is not shown
 
 	}

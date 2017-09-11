@@ -5,6 +5,12 @@ import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelJoinEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelLeaveEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelMoveEvent;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.IVoiceChannel;
 import sx.blah.discord.util.EmbedBuilder;
 
 import java.net.MalformedURLException;
@@ -77,6 +83,7 @@ public class MyEvents
 		BotUtils.sendMessage(event.getClient().getChannels().get(3), "Yami is ready");
 	}
 
+
 	@EventSubscriber
 	public void welcome(UserJoinEvent event)
 	{
@@ -84,6 +91,39 @@ public class MyEvents
 		BotUtils.sendMessage(event.getClient().getChannels().get(0),
 		        event.getUser().getName() + " joined at: " + time.toString() + ". Welcome!");
 	}
+
+	@EventSubscriber
+	public void joinMessage(UserVoiceChannelJoinEvent event)
+	{
+		IVoiceChannel chan = event.getVoiceChannel();
+		IChannel gen = event.getClient().getChannels().get(0);
+		IUser usr = event.getUser();
+
+		BotUtils.sendMessage(gen, usr.getName() + " joined " + chan.getName());
+	}
+
+	@EventSubscriber
+	public void leaveMessage(UserVoiceChannelLeaveEvent event)
+	{
+		IVoiceChannel chan = event.getVoiceChannel();
+		IChannel gen = event.getClient().getChannels().get(0);
+		IUser usr = event.getUser();
+
+		BotUtils.sendMessage(gen, usr.getName() + " left " + chan.getName());
+	}
+
+	@EventSubscriber
+	public void moveMessage(UserVoiceChannelMoveEvent event)
+	{
+		IVoiceChannel oldChan = event.getOldChannel();
+		IVoiceChannel newChan = event.getNewChannel();
+		IChannel gen = event.getClient().getChannels().get(0);
+		IUser usr = event.getUser();
+
+		BotUtils.sendMessage(gen, usr.getName() + " moved from " + oldChan.getName() + " to " + newChan.getName());
+
+	}
+
 
 	private void testCommand(MessageReceivedEvent event, List<String> args)
 	{
@@ -100,8 +140,9 @@ public class MyEvents
 		builder.withTitle("Commands");
 		builder.appendField("!help:", "shows this message", false);
 		builder.appendField("!giveAnime", "gives random animeshow from archive", false);
-		builder.appendField("!addAnime", "adds name link into archive. Syntax: ;name;proxerlink", false);
+		builder.appendField("!addAnime", "adds name link into archive. Syntax: name proxerlink", false);
 		builder.appendField("Author: Hoppix#6723", "[@Github](https://github.com/Hoppix)", false);
+		builder.appendField("Made with Discord4J", "[@Github](https://github.com/austinv11/Discord4J)", false);
 		builder.withColor(255, 0, 0);
 		builder.withTitle("Yami-Bot");
 		builder.withTimestamp(time);

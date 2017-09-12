@@ -10,8 +10,7 @@ public class MainRunner
 	public static void main(String[] args)
 	{
 
-		cli = BotUtils.getBuiltDiscordClient("MzA2NDA3MjU1NDU5MjMzNzky.C-DTiQ.ByLgE38pRYAG7n6TET7i2d9Ef0k");
-		//TODO change bot token
+		cli = BotUtils.getBuiltDiscordClient("INSERT TOKEN HERE");
 
 		/*
 		Register a listener via the EventSubscriber annotation which allows
